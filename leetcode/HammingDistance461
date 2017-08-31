@@ -1,0 +1,14 @@
+class Solution {
+    public int hammingDistance(int x, int y) {
+        //亦或，数有几个1
+        int n = x^y;//这里还要消灭所有相同的数字
+        int l = 0;
+        while(n>0){
+            if((n&1)==1){//不要犯糊涂，这里是要取1
+                l++;
+            }
+            n=n>>>1;//Java存在>>和>>>
+        }
+        return l;
+    }
+}
