@@ -1,0 +1,30 @@
+public class Codec {
+    private String sBase = "http://tinyurl.com/";
+    private HashMap<String,String> l2s = new HashMap<String,String>();//实例化要在声明处完成，否则get的时候需要把String转化成object
+    private HashMap<String,String> s2l = new HashMap<String,String>();
+    // Encodes a URL to a shortened URL.
+    public String encode(String longUrl) {
+        while(!l2s.containsKey(longUrl)){
+            Random random=new Random();
+            String key = String.valueOf(random.nextInt(1000000));
+            key = "000000".substring(0,6-key.length())+key;//key的生成，需要考虑到数字转字符串，前面0补位
+            if(s2l.containsKey(key)){
+                continue;
+            }else{
+                l2s.put(longUrl,key);
+                s2l.put(key,longUrl);
+            }
+        }
+        return sBase+l2s.get(longUrl); 
+    }
+
+    // Decodes a shortened URL to its original URL.
+    public String decode(String shortUrl) {
+        String key = shortUrl.substring(shortUrl.length()-6);
+        return s2l.get(key);
+    }
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.decode(codec.encode(url));
