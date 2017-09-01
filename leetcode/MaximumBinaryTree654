@@ -8,6 +8,7 @@
  * }
  */
 class Solution {
+    
     //while循环要记得参数更新:i++，before = before.right。
     public TreeNode constructMaximumBinaryTree(int[] nums) {
         if(nums.length==0)return null;
@@ -36,4 +37,5 @@ class Solution {
         return root;
         
     }
+    //存在O(N)解法。
 }
