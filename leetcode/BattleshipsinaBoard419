@@ -1,0 +1,22 @@
+class Solution {
+    public int countBattleships(char[][] board) {
+        int sum = 0;
+        //找头即可,横头竖头
+        int imax = board.length-1,jmax = board[0].length-1;
+        for(int i=0;i<=imax;i++){
+            for(int j=0;j<=jmax;j++){
+                //上左
+                if(board[i][j]=='X'){
+                    boolean top = i==0?true:(board[i-1][j]=='.');
+                    boolean left = j==0?true:(board[i][j-1]=='.');
+
+                    if(top&&left) sum++;
+                  
+                }
+               
+            }
+            
+        }
+        return sum;
+    }
+}
