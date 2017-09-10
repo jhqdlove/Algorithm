@@ -1,0 +1,19 @@
+class Solution {
+    public int distributeCandies(int[] candies) {
+        int number = candies.length/2;
+        if(number==0){
+            return 0;
+        }
+        
+        Arrays.sort(candies);
+        
+        int kinds = 1;
+        for(int i=1;i<candies.length;i++){
+            if(candies[i]!=candies[i-1]){
+                kinds++;
+            }
+        }
+        
+        return kinds<number?kinds:number;
+    }
+}
