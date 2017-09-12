@@ -1,0 +1,32 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode trimBST(TreeNode root, int L, int R) {
+        // 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值
+        //寻找根节点
+	TreeNode result = root;
+
+	while(result!=null){
+		if(result.val>R){
+			result = result.left;
+		}else if(result.val<L){
+			result = result.right;
+		}else{
+			break;
+		}
+	} 
+	if(result == null) return null;
+		
+	result.left = trimBST(result.left,L,result.val);
+	result.right = trimBST(result.right,result.val,R);
+	
+	return result;
+    }
+}
