@@ -1,0 +1,18 @@
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> re =  new ArrayList<String>(n);
+        
+        for(int i=1;i<=n;i++){
+            String tag = (i%3==0?"Fizz":"")+(i%5==0?"Buzz":"");
+            re.add(i-1,tag.equals("")?String.valueOf(i):tag);
+            
+        }
+        
+        return re;
+    }
+}
+
+
+坑比较多的一道题
+1.i位置上的数字是i+1
+2,数字到字符串的转化，已经当前位置情况的判断
