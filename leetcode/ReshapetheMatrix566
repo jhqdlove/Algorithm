@@ -1,0 +1,28 @@
+class Solution {
+    public int[][] matrixReshape(int[][] nums, int r, int c) {
+        if(nums==null || nums.length==0 || (nums.length* nums[0].length!=r*c) || nums.length==r  ){
+            return nums;
+        }
+        int[][] result = new int[r][c];
+        int m=0,n=0,rb = nums.length,cb = nums[0].length;
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                result[i][j] = nums[m][n];
+                if(n==cb-1){
+                    n=0;
+                    m++;
+                }else{
+                    n++;
+                }
+                
+            }            
+        }
+       return result; 
+        
+    }
+}
+
+
+//别人的循环更聪明
+ for (int i=0;i<r*c;i++) 
+        res[i/c][i%c] = nums[i/m][i%m];
