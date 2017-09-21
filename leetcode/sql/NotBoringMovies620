@@ -1,0 +1,7 @@
+select * from cinema where id&1 and description not like 'boring' order by rating desc;
+
+
+两点心得：
+1、where后面条件语句的本质是true、false
+所以奇数可以是id&1，偶数是id=(id>>1)<<1
+2、not like 没有is
