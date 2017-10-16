@@ -1,0 +1,27 @@
+class Solution {
+    public int calPoints(String[] ops) {
+       
+        LinkedList<Integer> temp =  new LinkedList<Integer>();
+        int sum = 0;
+        
+        //LinkedList getLast/peekLast/removeLast
+        for(String op:ops){
+            if("+".equals(op)){
+                int score  =  temp.getLast()+temp.get(temp.size()-2); //-2         
+                temp.addLast(score);
+                sum+=score;
+            }else if("C".equals(op)){
+                sum-=temp.removeLast(); 
+            }else if("D".equals(op)){
+                sum+=temp.getLast()*2;
+                temp.addLast(temp.getLast()*2);                
+            }else{
+                sum+=Integer.valueOf(op);
+                temp.addLast(Integer.valueOf(op));               
+            }
+        }
+                     
+        return sum;
+        
+    }
+}
