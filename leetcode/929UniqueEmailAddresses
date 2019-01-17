@@ -1,0 +1,32 @@
+class Solution {
+    public int numUniqueEmails(String[] emails) {
+        Set<String> key = new HashSet<String>();
+        for(int i=0;i<emails.length;i++){
+            String str = emails[i];
+            StringBuilder strB=new StringBuilder();
+            boolean finda = false; 
+            boolean findplus = false ;
+            for(int j=0;j<str.length();j++){
+                char a = str.charAt(j);
+                if(finda){
+                  strB.append(a);  
+                }else if('@'==a){
+                    finda=true;
+                    strB.append(a); 
+                }else if(findplus){
+                
+                }else if('.'==a){
+                    
+                }else if('+'==a){
+                    findplus=true;
+                }else{
+                    strB.append(a);   
+                }                
+            }
+            key.add(strB.toString());
+            
+        }
+        return key.size();
+        
+    }
+}
