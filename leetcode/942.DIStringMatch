@@ -1,0 +1,13 @@
+class Solution {
+    public int[] diStringMatch(String S) {     
+        
+        int min=0,max=S.length();
+        int[] result = new int[max+1];
+        for(int i=0;i<S.length();i++){
+            char DI = S.charAt(i);
+            result[i]=DI=='I'?min++:max--;
+        }
+        result[result.length-1]=min;
+        return result;
+    }
+}
